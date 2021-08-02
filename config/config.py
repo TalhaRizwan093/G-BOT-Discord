@@ -1,0 +1,6 @@
+my_discord_profile_id = 601473421812957211
+general_knowledge_channel_id = 790203188787281951
+daily_quotes_channel_id = 866440252818063391
+date_channel_id = 869790026408538113
+test_channel_id = 768022585698942986
+my_discord_server_id = 683285358838153256
