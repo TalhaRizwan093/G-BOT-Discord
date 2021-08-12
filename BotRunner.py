@@ -17,7 +17,7 @@ for cogs in os.listdir("./Commands"):
 async def on_ready():
     await bot.change_presence(activity=discord.Game(name="Gping"))
     print("Logged in!")
-    scheduled_time = ["09:00", "22:00", "10:00"]
+    scheduled_time = ["09:00", "22:00", "17:00"]
     channel_for_date = discord.Guild.get_channel(self=bot.get_guild(my_discord_server_id),
                                                  channel_id=date_channel_id)
     while True:
@@ -29,23 +29,22 @@ async def on_ready():
         print(time_for_automation)
         if time_for_automation == scheduled_time[0]:
             await bot.get_channel(daily_quotes_channel_id). \
-                send(f'Automated Quote\n@everyone\n',
-                     embed=microsoft_translator_quote_ur(bot.get_channel(daily_quotes_channel_id),
-                                                         random.choice(sequence)))
-        elif time_for_automation == scheduled_time[1]:
-            await bot.get_channel(daily_quotes_channel_id). \
-                send(f'Automated Quote\n@everyone\n'
-                     ,
+                send(f'Quote of the Day\n@everyone\n',
                      embed=microsoft_translator_quote_ur(bot.get_channel(daily_quotes_channel_id),
                                                          random.choice(sequence)))
         elif time_for_automation == scheduled_time[2]:
             await bot.get_channel(general_knowledge_channel_id). \
-                send(f'Automated Quote\n@everyone\n'
+                send(f'History of Today\n@everyone\n'
                      ,
                      embed=history_today_second(ctx="none"))
-        if time_for_automation == "00:00":
-            date_for_automation = pakistan_time.strftime("%a, %d-%b-%Y")
-            await channel_for_date.edit(name=f"『🗓』: {date_for_automation}")
+        try:
+            if time_for_automation == "00:00":
+                date_for_automation = pakistan_time.strftime("%a, %d-%b-%Y")
+                await channel_for_date.edit(name=f"『🗓』: {date_for_automation}")
+        except:
+            if time_for_automation == "00:03":
+                date_for_automation = pakistan_time.strftime("%a, %d-%b-%Y")
+                await channel_for_date.edit(name=f"『🗓』: {date_for_automation}")
 
         await asyncio.sleep(60)
 
