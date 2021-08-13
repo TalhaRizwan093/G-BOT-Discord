@@ -24,7 +24,7 @@ async def on_ready():
         karachi_pakistan = timezone('Asia/Karachi')
         pakistan_time = datetime.now(karachi_pakistan)
         print(pakistan_time.strftime('%a, %d-%b-%Y'))
-        sequence = ["i", "q", "j", "t", "g"]
+        sequence = ["i", "q", "j", "q", "t", "q", "g", "q"]
         time_for_automation = pakistan_time.strftime("%H:%M")
         print(time_for_automation)
         if time_for_automation == scheduled_time[0]:
